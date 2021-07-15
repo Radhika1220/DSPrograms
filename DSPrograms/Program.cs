@@ -10,6 +10,7 @@ namespace DSPrograms
             Console.WriteLine("1.Unordered List");
             Console.WriteLine("2.Ordered List");
             Console.WriteLine("3.Balancing Parantheses");
+            Console.WriteLine("4.Banking Cash Counter");
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -31,6 +32,10 @@ namespace DSPrograms
                     {
                         Console.WriteLine("Parantheses not Balanced");
                     }
+                    break;
+                case 4:
+                    BankingCashCounter banking = new BankingCashCounter();
+                    banking.MaintainQueue();
                     break;
                 default:
                     Console.WriteLine("Enter a valid option");

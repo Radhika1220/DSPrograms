@@ -95,7 +95,44 @@ namespace DSPrograms
                 }
             }
         }
-
+        public void Enqueue(T item)
+        {
+            Node<T> new_node = new Node<T>(item);
+            if (this.head == null)
+            {
+                this.head = new_node;
+            }
+            else
+            {
+                Node<T> temp = this.head;
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = new_node;
+            }
+        }
+        public void Dequeue()
+        {
+            if (this.head == null)
+            {
+                Console.WriteLine("Queue is empty");
+            }
+            Node<T> temp = this.head;
+            this.head = this.head.next;
+        
+        }
+        public int IsEmpty()
+        {
+            if (this.head!= null)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public string ReturnString()
         {
             string strText = "";
