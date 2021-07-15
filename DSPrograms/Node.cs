@@ -6,13 +6,14 @@ namespace DSPrograms
 {
     public class Node<T>
     {
+        public Node<T> next;
         public T data;
         public int idata;
-        public Node<T> next;
         public Node(T data)
         {
             this.data = data;
-            next = null;
+            this.next = null;
+            idata = Convert.ToInt32(data);
         }
     }
 }

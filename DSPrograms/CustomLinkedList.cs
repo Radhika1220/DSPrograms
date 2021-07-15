@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DSPrograms
 {
-  public class CustomLinkedList<T>
+  public class CustomLinkedList<T> where T :IComparable
     {
         public Node<T> head;
 
@@ -31,7 +31,7 @@ namespace DSPrograms
         }
         public void Display()
         {
-            Console.WriteLine("------Displaying Nodes---------");
+            Console.WriteLine("\n------Displaying Nodes---------");
             Node<T> temp = this.head;
             if (temp == null)
             {
@@ -64,6 +64,38 @@ namespace DSPrograms
                 }
             }
         }
+        public void Sort(T data)
+        {
+            Node<T> newNode = new Node<T>(data);
+            Node<T> temp = head;
+            if (head == null || newNode.idata <= head.idata)
+            {
+                newNode.next = head;
+                head = newNode;
+            }
+            else if (head.next == null && head.idata < newNode.idata)
+            {
+                head.next = newNode;
+            }
+            else
+            {
+                if (temp.next.idata > newNode.idata)
+                {
+                    newNode.next = temp.next;
+                    temp.next = newNode;
+                }
+                else
+                {
+                    while (temp.next != null && temp.next.idata < newNode.idata)
+                    {
+                        temp = temp.next;
+                    }
+                    newNode.next = temp.next;
+                    temp.next = newNode;
+                }
+            }
+        }
+
         public string ReturnString()
         {
             string strText = "";
