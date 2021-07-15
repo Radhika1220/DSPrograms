@@ -41,7 +41,7 @@ namespace DSPrograms
                 list.Sort(searchNum);
             }
             string textFile = list.ReturnString();
-            File.WriteAllText(@"C:\Users\Radhika\source\repos\DSPrograms\DSPrograms\words.txt", textFile);
+            File.WriteAllText(@"C:\Users\Radhika\source\repos\DSPrograms\DSPrograms\NumberList.txt", textFile);
             list.Display();
 
         }
