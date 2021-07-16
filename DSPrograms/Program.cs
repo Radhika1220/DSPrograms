@@ -11,6 +11,7 @@ namespace DSPrograms
             Console.WriteLine("2.Ordered List");
             Console.WriteLine("3.Balancing Parantheses");
             Console.WriteLine("4.Banking Cash Counter");
+            Console.WriteLine("5.Print calender format");
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -36,6 +37,9 @@ namespace DSPrograms
                 case 4:
                     BankingCashCounter banking = new BankingCashCounter();
                     banking.MaintainQueue();
+                    break;
+                case 5:
+                    Calender.PrintCalender();
                     break;
                 default:
                     Console.WriteLine("Enter a valid option");
