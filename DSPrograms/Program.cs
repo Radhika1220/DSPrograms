@@ -13,7 +13,7 @@ namespace DSPrograms
             Console.WriteLine("4.Banking Cash Counter");
             Console.WriteLine("5.Print calender format");
             Console.WriteLine("6.Palindrome Checker");
-            
+            Console.WriteLine("7.Number of binary search tree");
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -47,8 +47,14 @@ namespace DSPrograms
  
                     PalindromeChecker<char> checker = new PalindromeChecker<char>();
                     checker.IsPalindrome();
-              
                     break;
+                case 7:
+                    Console.WriteLine("Enter the number : ");
+                    int n = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Number of structurally Unique BST with " + n + " keys are : " + NoOfUniqueBinarySearchTree.numberOfBST(n));
+                    break;
+
+
                 default:
                     Console.WriteLine("Enter a valid option");
                     break;
