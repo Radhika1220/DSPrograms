@@ -12,6 +12,8 @@ namespace DSPrograms
             Console.WriteLine("3.Balancing Parantheses");
             Console.WriteLine("4.Banking Cash Counter");
             Console.WriteLine("5.Print calender format");
+            Console.WriteLine("6.Palindrome Checker");
+            
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -40,6 +42,12 @@ namespace DSPrograms
                     break;
                 case 5:
                     Calender.PrintCalender();
+                    break;
+                case 6:
+ 
+                    PalindromeChecker<char> checker = new PalindromeChecker<char>();
+                    checker.IsPalindrome();
+              
                     break;
                 default:
                     Console.WriteLine("Enter a valid option");

@@ -113,14 +113,29 @@ namespace DSPrograms
             }
         }
         public void Dequeue()
-        {
+       {
             if (this.head == null)
             {
                 Console.WriteLine("Queue is empty");
             }
             Node<T> temp = this.head;
             this.head = this.head.next;
-        
+      
+        }
+        public string DequeuePalindromeChecker()
+        {
+            string reverseString = " ";
+            while (this.head != null)
+            {
+                if (this.head == null)
+                {
+                    Console.WriteLine("Queue is empty");
+                }
+
+                reverseString = this.head.data + reverseString;
+                head = head.next;
+            }
+            return reverseString;
         }
         public int IsEmpty()
         {
