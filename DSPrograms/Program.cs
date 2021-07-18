@@ -14,6 +14,7 @@ namespace DSPrograms
             Console.WriteLine("5.Print calender format");
             Console.WriteLine("6.Palindrome Checker");
             Console.WriteLine("7.Number of binary search tree");
+            Console.WriteLine("Hash Slot");
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -53,7 +54,9 @@ namespace DSPrograms
                     int n = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Number of structurally Unique BST with " + n + " keys are : " + NoOfUniqueBinarySearchTree.numberOfBST(n));
                     break;
-
+                case 8:
+                    HashingList.HashList();
+                    break;
 
                 default:
                     Console.WriteLine("Enter a valid option");
