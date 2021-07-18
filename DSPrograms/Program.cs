@@ -14,7 +14,8 @@ namespace DSPrograms
             Console.WriteLine("5.Print calender format");
             Console.WriteLine("6.Palindrome Checker");
             Console.WriteLine("7.Number of binary search tree");
-            Console.WriteLine("Hash Slot");
+            Console.WriteLine("8.Hash Slot");
+            Console.WriteLine("9.Prime checker in 2D Array");
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -57,7 +58,9 @@ namespace DSPrograms
                 case 8:
                     HashingList.HashList();
                     break;
-
+                case 9:
+                    PrimeNumInRange.IsPrimeChecker(0,1000);
+                    break;
                 default:
                     Console.WriteLine("Enter a valid option");
                     break;
