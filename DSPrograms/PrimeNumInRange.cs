@@ -49,7 +49,7 @@ namespace DSPrograms
             //Extending Program to find anagrams
 
             Console.WriteLine("\n*********** Printing Prime Number From  {0} to  {1}  **********", start, end);
-      
+            Console.WriteLine("\n");
             change = 0;
             for (int a = 0; a < 10; a++)
             {
@@ -91,19 +91,35 @@ namespace DSPrograms
                         {
                             AnagramNum[range, index] = primeNum[a, b];
                             list.Push(primeNum[a, b]);
+                            list.Enqueue(primeNum[a, b]);
                             index++;
                             AnagramNum[range, index] = primeNum[a, q];
                             list.Push(primeNum[a, q]);
+                            list.Enqueue(primeNum[a, q]);
                             index++;
 
                         }
                     }
                 }
             }
+            PrintingAnagramInReverse(0, 1000);
+            PrintingAnagramUsingQueue(0, 1000);
+
+        }
+        public static void PrintingAnagramInReverse(int start,int end)
+        {
             Console.WriteLine("\n");
-            Console.WriteLine("\n ****** Printing the Anagram in Reverse Order From {0} to {1} **** ", start, end);
+            Console.WriteLine("\n ****** Printing the Anagram in Reverse Order(Using Stack Operations) From {0} to {1} **** ", start, end);
+            Console.WriteLine("\n");
             list.PushDisplay();
 
+        }
+        
+        public static void PrintingAnagramUsingQueue(int start,int end)
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("\n ****** Printing the Anagram (Using Queue Operations) From {0} to {1} **** ", start, end);
+            list.Display();
         }
 
         //printing anagram array
@@ -111,6 +127,7 @@ namespace DSPrograms
         {
             Console.WriteLine("\n");
             Console.WriteLine("\n********* Printing Anagram Array From {0} to {1} ***********", start, end);
+            Console.WriteLine("\n");
             //Print Array having anagram
             for (int k = 0; k < 10; k++)
             {
@@ -130,6 +147,7 @@ namespace DSPrograms
         {
             Console.WriteLine("\n");
             Console.WriteLine("\n************ Printing Non-Anagram Array From {0} to  {1} ************", start, end);
+            Console.WriteLine("\n");
             //Print Array having anagram
             int flag = 0;
             for (int k = 0; k < 10; k++)
