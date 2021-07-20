@@ -11,6 +11,7 @@ namespace DSPrograms
         public static int[,] NotAnagramNum = new int[10, 100];
         public static int range, change, index = 0;
         public static int[,] primeNum = new int[10, 100];
+        static CustomLinkedList<int> list = new CustomLinkedList<int>();
         //Checking prime number
         public static void IsPrimeChecker(int start, int end)
         {
@@ -24,7 +25,7 @@ namespace DSPrograms
 
                 }
 
-              
+
                 if (change != range)
                 {
                     index = 0;
@@ -46,8 +47,9 @@ namespace DSPrograms
                 }
             }
             //Extending Program to find anagrams
-           
+
             Console.WriteLine("\n*********** Printing Prime Number From  {0} to  {1}  **********", start, end);
+      
             change = 0;
             for (int a = 0; a < 10; a++)
             {
@@ -88,70 +90,78 @@ namespace DSPrograms
                         if (secondStr == firstStr)
                         {
                             AnagramNum[range, index] = primeNum[a, b];
+                            list.Push(primeNum[a, b]);
                             index++;
                             AnagramNum[range, index] = primeNum[a, q];
+                            list.Push(primeNum[a, q]);
                             index++;
 
                         }
                     }
                 }
             }
+            Console.WriteLine("\n");
+            Console.WriteLine("\n ****** Printing the Anagram in Reverse Order From {0} to {1} **** ", start, end);
+            list.PushDisplay();
+
         }
-    
+
         //printing anagram array
-            public static void PrintingAnagram(int start,int end)
+        public static void PrintingAnagram(int start, int end)
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("\n********* Printing Anagram Array From {0} to {1} ***********", start, end);
+            //Print Array having anagram
+            for (int k = 0; k < 10; k++)
             {
-                Console.WriteLine("\n********* Printing Anagram Array From {0} to {1} ***********", start, end);
-                //Print Array having anagram
-                for (int k = 0; k < 10; k++)
+                for (int l = 0; l < 100; l++)
                 {
-                    for (int l = 0; l < 100; l++)
+                    if (AnagramNum[k, l] != 0)
                     {
-                        if (AnagramNum[k, l] != 0)
+                        Console.Write(AnagramNum[k, l] + " ");
+                        Console.Write(" ");
+                    }
+
+                }
+            }
+        }
+        //printing non-anagram array
+        public static void PrintingNonAnagram(int start, int end)
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("\n************ Printing Non-Anagram Array From {0} to  {1} ************", start, end);
+            //Print Array having anagram
+            int flag = 0;
+            for (int k = 0; k < 10; k++)
+            {
+                for (int l = 0; l < 100; l++)
+                {
+                    flag = 0;
+                    if (primeNum[k, l] != 0)
+                    {
+                        for (int p = 0; p < 10; p++)
                         {
-                            Console.Write(AnagramNum[k, l] + " ");
+                            for (int m = 0; m < 100; m++)
+                            {
+
+                                if (primeNum[k, l] == AnagramNum[p, m])
+                                {
+                                    flag = 1;
+                                    break;
+                                }
+                            }
+                        }
+                        if (flag == 0)
+                        {
+                            NotAnagramNum[k, l] = primeNum[k, l];
+                            Console.Write(NotAnagramNum[k, l] + " ");
                             Console.Write(" ");
                         }
 
                     }
                 }
             }
-        //printing non-anagram array
-            public static void PrintingNonAnagram(int start, int end)
-            {
-                Console.WriteLine("\n************ Printing Non-Anagram Array From {0} to  {1} ************", start, end);
-                //Print Array having anagram
-                int flag = 0;
-                for (int k = 0; k < 10; k++)
-                {
-                    for (int l = 0; l < 100; l++)
-                    {
-                        flag = 0;
-                        if (primeNum[k, l] != 0)
-                        {
-                            for (int p = 0; p < 10; p++)
-                            {
-                                for (int m = 0; m < 100; m++)
-                                {
 
-                                    if (primeNum[k, l] == AnagramNum[p, m])
-                                    {
-                                        flag = 1;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (flag == 0)
-                            {
-                                NotAnagramNum[k, l] = primeNum[k, l];
-                                Console.Write(NotAnagramNum[k, l] + " ");
-                                Console.Write(" ");
-                            }
-
-                        }
-                    }
-                }
-
-            }
         }
     }
+}

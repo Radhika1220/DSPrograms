@@ -7,7 +7,7 @@ namespace DSPrograms
   public  class CustomLinkedList<T> where T :IComparable
     {
         public Node<T> head;
-
+        public Node<T> top;
         public bool Search( T val)
         {
             Node<T> temp = this.head;
@@ -22,7 +22,21 @@ namespace DSPrograms
             }
             return false;
         }
-        public void InsertFront(T new_data)
+
+        public void Push(T newData)
+        {
+            Node<T> newNode = new Node<T>(newData);
+            if (this.top != null)
+            {
+                newNode.next = this.top;
+            }
+            this.top = newNode;
+           // Console.WriteLine("New Node {0} is added ", newNode.data);
+        }
+     
+    
+
+     public void InsertFront(T new_data)
         {
             Node<T> newNode = new Node<T>(new_data);
             newNode.next = this.head;
@@ -47,7 +61,23 @@ namespace DSPrograms
                 }
             }
         }
-        public void DeleteElement(T data)
+
+        public void  PushDisplay()
+        {
+            Node<T> temp = this.top;
+            if (temp == null)
+            {
+                Console.WriteLine("No values to be added");
+                return;
+            }
+            while (temp != null)
+            {
+                Console.Write(temp.data + " ");
+                temp = temp.next;
+            }
+        }
+    
+    public void DeleteElement(T data)
         {
             Node<T> temp = head;
             while (temp.next != null)
