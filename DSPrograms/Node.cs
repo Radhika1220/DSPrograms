@@ -13,7 +13,7 @@ namespace DSPrograms
         {
             this.data = data;
             this.next = null;
-            idata = Convert.ToInt32(data);
+            //idata = Convert.ToInt32(data);
         }
     }
 }

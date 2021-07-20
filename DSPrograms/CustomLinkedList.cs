@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DSPrograms
 {
-  public class CustomLinkedList<T> where T :IComparable
+  public  class CustomLinkedList<T> where T :IComparable
     {
         public Node<T> head;
 

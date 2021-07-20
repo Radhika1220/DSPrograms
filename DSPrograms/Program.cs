@@ -15,7 +15,7 @@ namespace DSPrograms
             Console.WriteLine("6.Palindrome Checker");
             Console.WriteLine("7.Number of binary search tree");
             Console.WriteLine("8.Hash Slot");
-            Console.WriteLine("9.Prime checker in 2D Array");
+            Console.WriteLine("9.Prime checker and anagram in 2D Array");
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -60,6 +60,11 @@ namespace DSPrograms
                     break;
                 case 9:
                     PrimeNumInRange.IsPrimeChecker(0,1000);
+                    PrimeNumInRange.PrintingAnagram(0,1000);
+                    PrimeNumInRange.PrintingNonAnagram(0, 1000);
+                    break;
+                case 10:
+                   
                     break;
                 default:
                     Console.WriteLine("Enter a valid option");
