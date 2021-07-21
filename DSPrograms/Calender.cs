@@ -1,70 +1,80 @@
-﻿
+﻿using DSPrograms;
 using System;
-
+using System.Collections.Generic;
 using System.Text;
 
 namespace DSPrograms
 {
-    public class Calender
-    { 
-        public static void PrintCalender()
-        { 
-            //Print calendar
+    public class Calendar
+    {
+        public static int month;
+        public static int year;
+        static string[] months = { "","Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec" };
+        public static Queue<CalenderWeek<Calendar>> week = new Queue<CalenderWeek<Calendar>>();
 
-             Console.WriteLine("Please enter the year you want to print the calendar:");
+        //Get input from user
+        public void GetInput()
+        {
+            Console.WriteLine("Enter year of Calender");
+            year = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Month of Calender");
+            month = Convert.ToInt32(Console.ReadLine());
 
-             int year = Convert.ToInt32(Console.ReadLine());
+            CalenderFormat();
+        }
+        public static int DayFromDate(int d, int m, int y)
+        {
+            //Gregorian calendar
+            int y0 = y - (14 - m) / 12;
+            int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+            int m0 = m + 12 * ((14 - m) / 12) - 2;
+            int d0 = (d + x + 31 * m0 / 12) % 7;
+            return d0;
+        }
+        //Prints content of Calendar
+        public void CalenderFormat()
+        {
+            int day = 1;
+            int startDate = DayFromDate(1, month, year);
+            int totalDays = DateTime.DaysInMonth(year, month);
+            List<string> weeks = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
-             Console.WriteLine("Enter the month : ");
-
-             int month = Convert.ToInt32(Console.ReadLine());
-            //Get the number of days in month
-             int days = DateTime.DaysInMonth(year, month);
-            //The first day of the month
-             DateTime currday = new DateTime(year, month, 1);
-            
-             DateTime lastday = currday.AddMonths(1);
-
-             Console.WriteLine();
-
-             Console.WriteLine("{0} year {1} month ", year, month);
-
-             Console.WriteLine("S\tM\tTu\tW\tThu\tF\tSat");
-            //To print until next day of month
-             while (currday < lastday)
+            for (int i = 1; i <= 6; i++)
+            {
+                //Create object for each day of a week
+                CalenderWeek<Calendar> weekDayQueue = new CalenderWeek<Calendar>();
+                for (int j = 0; j < 7 && day <= totalDays; j++)
                 {
-                int weekday = Convert.ToInt32(currday.DayOfWeek);
-
-                    if (currday.Day == 1)
+                    CalenderWeek<Calendar> calenderWeek;
+                    //If date is empty ,this part is executed
+                    if (i == 1 && j < startDate)
                     {
-                        StringBuilder tmpSpace = new StringBuilder();
-                        for (int j = 0; j < weekday; j++)
-                         {
-                            tmpSpace.Append("  \t");
-                         }
-
-                    Console.Write("{0} {1}", tmpSpace.ToString(), currday.Day);
+                        calenderWeek = new CalenderWeek<Calendar>(weeks[j], " ");
+                        weekDayQueue.InsertLast(calenderWeek);
+                        continue;
                     }
-                    //If it is sunday
-                    else if (currday.DayOfWeek == DayOfWeek.Sunday)
-
-                    {   
-                        Console.Write(Environment.NewLine);
-
-                        Console.Write(" {0}", currday.Day);
-
-                    }
-                    //For other days
-                    else
-                    {
-                        Console.Write(" \t {0}", currday.Day);
-
-                    }
-
-                    currday = currday.AddDays(1);
+                    calenderWeek = new CalenderWeek<Calendar>(weeks[j], Convert.ToString(day));
+                    //Store value of each weekDay object 
+                    weekDayQueue.InsertLast(calenderWeek);
+                    day++;
                 }
+                //Enqueue each week object
+                week.Enqueue(weekDayQueue);
+            }
+            DisplayCalender();
+        }
+
+        //Display all days
+        public void DisplayCalender()
+        {
+            Console.WriteLine("{0} year {1} month ", year, month);
+            Console.WriteLine("Sun Mon Tue Wed Thu Fri Sat");
+            foreach (var i in week)
+            {
+                i.DisplayWeek();
             }
         }
     }
+}
 
 

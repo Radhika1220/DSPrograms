@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace DSPrograms
 {
@@ -43,7 +44,8 @@ namespace DSPrograms
                     banking.MaintainQueue();
                     break;
                 case 5:
-                    Calender.PrintCalender();
+                    Calendar calendar = new Calendar();
+                    calendar.GetInput();
                     break;
                 case 6:
  
@@ -64,7 +66,8 @@ namespace DSPrograms
                     PrimeNumInRange.PrintingNonAnagram(0, 1000);
                     break;
                 case 10:
-                   
+                    
+
                     break;
                 default:
                     Console.WriteLine("Enter a valid option");

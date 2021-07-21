@@ -106,6 +106,7 @@ namespace DSPrograms
             PrintingAnagramUsingQueue(0, 1000);
 
         }
+        //Printing the anagram in reverse order using stack 
         public static void PrintingAnagramInReverse(int start,int end)
         {
             Console.WriteLine("\n");
@@ -114,15 +115,15 @@ namespace DSPrograms
             list.PushDisplay();
 
         }
-        
+        //Printing the anagram using queue operations
         public static void PrintingAnagramUsingQueue(int start,int end)
         {
             Console.WriteLine("\n");
-            Console.WriteLine("\n ****** Printing the Anagram (Using Queue Operations) From {0} to {1} **** ", start, end);
+            Console.WriteLine("\n ****** Printing the Anagram (Using Queue Operations) From {0} to {1} ********* ", start, end);
             list.Display();
         }
 
-        //printing anagram array
+        //Printing anagram array
         public static void PrintingAnagram(int start, int end)
         {
             Console.WriteLine("\n");
