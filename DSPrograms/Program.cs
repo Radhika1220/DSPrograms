@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 
 namespace DSPrograms
 {
@@ -17,6 +18,7 @@ namespace DSPrograms
             Console.WriteLine("7.Number of binary search tree");
             Console.WriteLine("8.Hash Slot");
             Console.WriteLine("9.Prime checker and anagram in 2D Array");
+            Console.WriteLine("10.Queue using stacks");
             int check = Convert.ToInt32(Console.ReadLine());
             switch(check)
             {
@@ -44,8 +46,10 @@ namespace DSPrograms
                     banking.MaintainQueue();
                     break;
                 case 5:
-                    Calendar calendar = new Calendar();
-                    calendar.GetInput();
+                    //Calendar calendar = new Calendar();
+                    QueueUsingStacks q = new QueueUsingStacks();
+                    q.GetInput();
+                    //calendar.GetInput();
                     break;
                 case 6:
  
@@ -65,10 +69,8 @@ namespace DSPrograms
                     PrimeNumInRange.PrintingAnagram(0,1000);
                     PrimeNumInRange.PrintingNonAnagram(0, 1000);
                     break;
-                case 10:
-                    
-
-                    break;
+               
+                
                 default:
                     Console.WriteLine("Enter a valid option");
                     break;

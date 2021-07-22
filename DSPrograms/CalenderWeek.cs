@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DSPrograms
 {
-    public class CalenderWeek<T>
+    public class CalenderWeek<T> 
     {
         public string date;
         public string day;
         public CalenderWeek<T> next;
-        CalenderWeek<T> head;     
+        CalenderWeek<T> head;
         public CalenderWeek(string days, string dates)
         {
             this.date = dates;
@@ -19,9 +19,10 @@ namespace DSPrograms
 
         public CalenderWeek()
         {
+            return;
         }
 
-        public  void InsertLast(CalenderWeek<T> newNode)
+        public void InsertLast(CalenderWeek<T> newNode)
         {
             if (head == null)
             {
@@ -44,10 +45,6 @@ namespace DSPrograms
             }
             return temp;
         }
-      
-        //Creating a method to insert last 
-     
-    
         public void DisplayWeek()
         {
             CalenderWeek<T> temp = head;
@@ -72,6 +69,27 @@ namespace DSPrograms
                 temp = temp.next;
             }
             Console.WriteLine("\n");
+        }
+
+        public void InsertFront(CalenderWeek<T> newNode)
+        {
+            CalenderWeek<T> temp = head;
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                newNode.next = head;
+                head = newNode;
+            }
+        }
+        //Pop operation for stack
+        public CalenderWeek<T> DeQueue(CalenderWeek<T> stack)
+        {
+            CalenderWeek<T> temp = head;
+            stack.InsertFront(temp);
+            return stack;
         }
     }
 }

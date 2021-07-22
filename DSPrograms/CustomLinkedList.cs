@@ -33,10 +33,45 @@ namespace DSPrograms
             this.top = newNode;
            // Console.WriteLine("New Node {0} is added ", newNode.data);
         }
-     
-    
+        public void Peek()
+        {
+            if (this.top == null)
+            {
+                Console.WriteLine("No elements present in the stack");
+                //return;
+            }
+            Console.WriteLine("The element after peeking is : " + this.top.data);
+           
+        }
+        //Pop Mthod-Removes the top most element
+        public void Pop()
+        {
+            if (this.top == null)
+            {
+                Console.WriteLine("No elements present in the stack");
+                return;
+            }
+            Peek();
+            this.top = this.top.next;
+        }
 
-     public void InsertFront(T new_data)
+        public int CountFn()
+        {
+            Node<T> temp = this.head;
+            int count = 0;
+            if (this.top==null)
+            {
+                Console.WriteLine("No elements present in the stack");
+            }
+            else
+            {
+                temp = temp.next;
+                count++;
+            }
+            return count;
+        }
+
+        public void InsertFront(T new_data)
         {
             Node<T> newNode = new Node<T>(new_data);
             newNode.next = this.head;

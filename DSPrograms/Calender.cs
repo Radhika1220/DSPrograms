@@ -11,6 +11,7 @@ namespace DSPrograms
         public static int year;
         static string[] months = { "","Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec" };
         public static Queue<CalenderWeek<Calendar>> week = new Queue<CalenderWeek<Calendar>>();
+        public static Queue<CalenderWeek<Calendar>> stackqueue = new Queue<CalenderWeek<Calendar>>();
 
         //Get input from user
         public void GetInput()
@@ -36,6 +37,7 @@ namespace DSPrograms
         {
             int day = 1;
             int startDate = DayFromDate(1, month, year);
+          
             int totalDays = DateTime.DaysInMonth(year, month);
             List<string> weeks = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
@@ -43,35 +45,47 @@ namespace DSPrograms
             {
                 //Create object for each day of a week
                 CalenderWeek<Calendar> weekDayQueue = new CalenderWeek<Calendar>();
+                CalenderWeek<Calendar> StackQueue = new CalenderWeek<Calendar>();
                 for (int j = 0; j < 7 && day <= totalDays; j++)
                 {
                     CalenderWeek<Calendar> calenderWeek;
+                    CalenderWeek<Calendar> calenderWeekforStack;
                     //If date is empty ,this part is executed
                     if (i == 1 && j < startDate)
                     {
                         calenderWeek = new CalenderWeek<Calendar>(weeks[j], " ");
+                        calenderWeekforStack = new CalenderWeek<Calendar>(weeks[j], "");
                         weekDayQueue.InsertLast(calenderWeek);
+                        StackQueue.InsertFront(calenderWeekforStack);
                         continue;
                     }
                     calenderWeek = new CalenderWeek<Calendar>(weeks[j], Convert.ToString(day));
+                    calenderWeekforStack = new CalenderWeek<Calendar>(weeks[j], "");
                     //Store value of each weekDay object 
                     weekDayQueue.InsertLast(calenderWeek);
+                    StackQueue.InsertFront(calenderWeekforStack);
                     day++;
+                    stackqueue.Enqueue(StackQueue);
                 }
                 //Enqueue each week object
                 week.Enqueue(weekDayQueue);
             }
             DisplayCalender();
         }
+        public Queue<CalenderWeek<Calendar>> Stack()
+        {
+            GetInput();
+            return stackqueue;
+        }
 
-        //Display all days
-        public void DisplayCalender()
+            //Display all days
+            public void DisplayCalender()
         {
             Console.WriteLine("{0} year {1} month ", year, month);
             Console.WriteLine("Sun Mon Tue Wed Thu Fri Sat");
-            foreach (var i in week)
+            foreach (var w in week)
             {
-                i.DisplayWeek();
+                w.DisplayWeek();
             }
         }
     }
